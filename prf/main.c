@@ -2,9 +2,8 @@
 
 int main(int argc, const char *argv[])
 {
-    int i=0;
+    int i='a';
     printf("0x%x\n",(unsigned int)(&i));
-    i=97;
     printf("%c\n",i);
     printf("%x\n",i);
     printf("%d\n",i);
@@ -16,5 +15,8 @@ int main(int argc, const char *argv[])
     while(i<127)
         printf("%3d: %c%c",i++,i,(i-31)%8==0?'\n':'\t');
     puts("");
+    putchar('a'-' ');
+    puts("");
+    putchar(getchar());
     return 0;
 }

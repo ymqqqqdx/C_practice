@@ -1,3 +1,4 @@
 ./.config/user-dirs.dirs 修改默认路径
 a == &a[0]
 fflush(stdin); 清空输入缓冲区，为了确保不影响后面的数据读取（例如在读完一个字符后紧接着又要戾取一个字符，此时应该先执行fflash(stdin)）.
+getchar()会连后边的回车符一并读入，因此应在getchar()后多加一个getchar()来确准其工作正常。

@@ -21,8 +21,21 @@
     ln -s item link  to create a symbolic link either a file or a directory.
     tips:
         1.a hard link cannot in different file systems,and wherever the file is moved to,the link can find it.
-        2.a hard link my not referance to a directory.
+        2.a hard link can not referance to a directory.
 #Bash
+    1.press K on a keyword to view the MAN page.
+    2.1>&2 redirect 1(stdout) to 2(stderr)
+    3.echo -n not output new line
+    4.variable:-y  if the variable is NULL,then assign y to the variable
+        e.g:
+        echo -n "Want to say hello(Y/n): "
+        read Choice
+        if [ "${Choice:-y}" = "y" ];then
+            echo hello
+        fi
+    5.source + .sh to run the script in current process.
+##read
+    read -e ignore the '\n' or '\0' at the tail when input is NULL
 ##if quote
 ###if then fi
     if [ condition ]

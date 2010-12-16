@@ -40,13 +40,23 @@
 #then
     #mv a a.c
 #fi
-if [ -d dir1 ]
-then
-    echo already exists.
-else
-    mkdir dir1
-fi
-if [ ! -d dir2 ]
-then
-    mkdir dir2
+#if [ -d dir1 ]
+#then
+    #echo already exists.
+#else
+    #mkdir dir1
+#fi
+#if [ -d dir2 ]
+#then
+    #rm -rf dir2
+    #echo removed!
+#fi
+#if [ "$(id -u)" = "0" ]; then
+   #echo "This script must NOT be run as root, exit" 1>&2
+   #exit 1
+#fi
+echo -n "Want to say hello(Y/n): "
+read Choice
+if [ "${Choice:-y}" = "y" ];then
+    echo hello
 fi

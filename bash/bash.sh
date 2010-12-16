@@ -22,7 +22,8 @@
         #mv $file $file.c 
     #fi
 #done
-cd $1
+#cd $1
+echo $0 $1 $2 $3
 file="a.b.c"
 f=`echo $file|awk -F'.' '{ print $1 $2 $3 }' `
 echo $f
@@ -32,10 +33,3 @@ do
     rr=`echo $fcc|awk -F'.' '{ print $1 }' `
 mv $fcc $rr
 done
-
-for fccc in `ls *.c.c`
-do
-    rrr=`echo $fcc|awk -F'.' '{ print $1 "." $2 }' `
-    mv $fccc $rrr
-done
-    

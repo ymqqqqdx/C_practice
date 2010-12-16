@@ -1,7 +1,6 @@
-### ./.config/user-dirs.dirs change path of desktop.
-### a == &a[0].
-### getchar() will get the '\n',so add an extra getchar() to avoid errors.
-### /etc/fstab to mount disk automatically.
+##Dirs and files of system
+    ./.config/user-dirs.dirs change path of desktop.
+    /etc/fstab to mount disk automatically.
 ##cp [option]
     -a, --archive      copy files includeing ownerships and permissions.
     -i, --interactive  ask for whether overwrite the exist file.
@@ -23,4 +22,40 @@
     tips:
         1.a hard link cannot in different file systems,and wherever the file is moved to,the link can find it.
         2.a hard link my not referance to a directory.
-
+#Bash
+##if quote
+###if then fi
+    if [ condition ]
+    then
+        statements
+    fi
+###if then else fi
+    if [ condition ]
+    then
+        statements
+    else
+        statements
+    fi
+###if elif else fi
+    if [ condition ]
+    then
+        statements
+    elif [ condition ]
+    then
+        statements
+    else
+        statements
+    fi
+###if then else if then fi fi
+    if [ condition1 ]
+    then
+        statements
+    else
+        if[ condition2 ]
+        then
+            statements
+        fi
+    fi
+###test
+    if [ condition ]
+    if [ ! conditon ]

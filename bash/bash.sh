@@ -23,13 +23,30 @@
     #fi
 #done
 #cd $1
-echo $0 $1 $2 $3
-file="a.b.c"
-f=`echo $file|awk -F'.' '{ print $1 $2 $3 }' `
-echo $f
-
-for fcc in `ls *.c`
-do
-    rr=`echo $fcc|awk -F'.' '{ print $1 }' `
-mv $fcc $rr
-done
+#echo $0 $1 $2 $3
+#file="a.b.c"
+#f=`echo $file|awk -F'.' '{ print $1 $2 $3 }' `
+#echo $f
+#for fcc in `ls *.c`
+#do
+    #rr=`echo $fcc|awk -F'.' '{ print $1 }' `
+#mv $fcc $rr
+#done
+#echo $1.c
+#if [ -f a.c ]
+#then
+    #mv a.c a
+#elif [ -f a ]
+#then
+    #mv a a.c
+#fi
+if [ -d dir1 ]
+then
+    echo already exists.
+else
+    mkdir dir1
+fi
+if [ ! -d dir2 ]
+then
+    mkdir dir2
+fi

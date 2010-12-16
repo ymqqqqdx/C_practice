@@ -22,6 +22,7 @@ if [ "${CHOICE:-y}" = "y" ]
 then
     echo pushing...........
     git push
+    echo Git Push Finished!
 else
     echo cancelled
 fi

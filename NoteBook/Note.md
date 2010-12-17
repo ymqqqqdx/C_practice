@@ -72,3 +72,21 @@
 ###test
     if [ condition ]
     if [ ! conditon ]
+##Search
+###which
+    which command
+    search the location of a command
+###locate
+    search filename in database (very fast)
+    locate filename
+###find
+    find PATH
+    find . -name "filename"
+    find .|grep string
+###grep
+    grep [string] [filename]
+    grep -i ignore case
+    grep -n show line number
+    find . -exec grep "$1" '{}' \; -print 
+    -exec call command in find
+

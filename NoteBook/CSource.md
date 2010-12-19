@@ -16,3 +16,10 @@
     {
         return i + j;
     }
+    //function pointer is static,no matter whether add * or not,the effect is
+    the same
+##typedef a Function Pointer
+    typedef int (* fun)(void);
+
+    typedef void (*fun_t)(void);
+    ((fun_t)0x800)(); //jump to 0x800 and run there

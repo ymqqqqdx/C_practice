@@ -89,4 +89,15 @@
     grep -n show line number
     find . -exec grep "$1" '{}' \; -print 
     -exec call command in find
-
+##dpkg
+    dpkg -l   list all package installed
+    dpkg -L   list the files in the package
+    dpkg -S   show which package does the file belonging to
+    dpkg -r --remove
+    dpkg -P --purge
+##apt-get
+    apt-get -remove  not remove configuration files
+    apt-get -purge   remove all the files
+#websites
+    hacker news
+    stack overdev

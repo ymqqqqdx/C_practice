@@ -37,15 +37,6 @@ int main(int argc, const char *argv[])
             if(arr[i].sym == symbol)
                 result = arr[i].fun_t(a,b);
         }
-        //switch(symbol)
-        //{
-        //case '+' : calc=add; break;
-        //case '-' : calc=sub; break;
-        //case '*' : calc=mul; break;
-        //case '/' : calc=div; break;
-        //case '%' : calc=mod; break;
-        //}
-        //result = (*calc)(a,b);
         getchar();
         printf("%d %c %d = %d\n",a,symbol,b,result);
     }

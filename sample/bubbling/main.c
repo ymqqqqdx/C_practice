@@ -38,15 +38,9 @@ void bubble(void *arr,int length,int size,int (* fun)(void *,void *),void (*fun1
 {
     int i,j;
     for(i=0;i<length;i++)
-    {
         for(j=0;j<(length - i -1);j++)
-        {
             if( fun(arr + j*size, arr + (j + 1)*size) )
-            {
                 fun1(arr + j*size, arr + (j + 1)*size);
-            }
-        }
-    }
 }
 
 void get_random(int size,int length,void *arr)
@@ -54,28 +48,20 @@ void get_random(int size,int length,void *arr)
     int i;
     srand((unsigned)time(NULL));
     for(i=0;i<length;i++)
-    {
         if(size==1)
             *(char *)(arr+ size*i) = rand()%127;
         else
             *(int *)(arr + size*i) = rand()%1000;
-    }
 }
 
 int cmp_int(void *a,void *b)
 {
-    if(*(int *)a > *(int *)b)
-        return 0;
-    else
-        return 1;
+    return(*(int *)a > *(int *)b);
 }
 
 int cmp_char(void *a,void *b)
 {
-    if(*(char *)a > *(char *)b)
-        return 0;
-    else
-        return 1;
+    return(*(char *)a > *(char *)b);
 }
 void swap_char(void *a,void *b)
 {

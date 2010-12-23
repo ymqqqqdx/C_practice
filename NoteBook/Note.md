@@ -1,3 +1,6 @@
+##After install nvidia x driver
+    in /etc/X11/xorg.conf add
+    Option "RegistryDwords" "EnableBrightnessControl=1"
 ##Dirs and files of system
     ./.config/user-dirs.dirs change path of desktop.
     /etc/fstab to mount disk automatically.

@@ -24,6 +24,7 @@ void analyse(char *in,shell *shl)
     int k = 0;
     char *p;
     shl->command = strndup(in,(p = strnchar(in,' ',1)) - in);
+    
     if(*(++p) != '-')
         shl->argument[k++] = strndup(p,strnchar(p,' ',1) -p);
     while(p = strnchar(in,'-',i++))
@@ -44,13 +45,25 @@ int main(int argc, const char *argv[])
     char *p;
     int i = 0;
     shell myshell;
-    printf("mysh%% ");
-    fgets(arr,80,stdin);
-    analyse(arr,&myshell);
-    printf("command:\t%s\n",myshell.command);
-    while(p = myshell.argument[i++])
-        printf("argument%d:\t%s\n",i,myshell.argument[i - 1]);
-    printf("in_file:\t%s\n",myshell.in_file ? myshell.in_file : "NULL");
-    printf("out_file:\t%s\n",myshell.out_file ? myshell.out_file : "NULL");
+    while(1)
+    {
+        i = 0;
+        printf("mysh%% ");
+        fgets(arr,80,stdin);
+        if(!strcmp(arr,"exit\n"))
+            return 0;
+        analyse(arr,&myshell);
+        printf("command:\t%s\n",myshell.command);
+        free(myshell.command); myshell.command = NULL;
+        while(p = myshell.argument[i++])
+        {
+            printf("argument%d:\t%s\n",i,p);
+            free(p); p = NULL;
+        }
+        printf("in_file:\t%s\n",myshell.in_file ? myshell.in_file : "NULL");
+        free(myshell.in_file); myshell.in_file = NULL;
+        printf("out_file:\t%s\n",myshell.out_file ? myshell.out_file : "NULL");
+        free(myshell.out_file); myshell.out_file = NULL;
+    }
     return 0;
 }

@@ -1,0 +1,53 @@
+<h1>C Source</h1>
+
+<h2>Function Pointer</h2>
+
+<pre><code>#include &lt;stdio.h&gt;
+int addtwo(int,int);
+int main(int argc, const char *argv[])
+{
+    int result;
+    int (* fun1) (int,int);
+    fun1 = addtwo;
+    result = (*fun1)(3,5);
+    printf("%d\n",result);
+    return 0;
+}
+
+int addtwo(int i,int j)
+{
+    return i + j;
+}
+//function pointer is static,no matter whether add * or not,the effect is
+the same
+</code></pre>
+
+<h2>typedef a Function Pointer</h2>
+
+<pre><code>typedef int (* fun)(void);
+
+typedef void (*fun_t)(void);
+((fun_t)0x800)(); //jump to 0x800 and run there
+</code></pre>
+
+<h2>union</h2>
+
+<pre><code>union day{
+    int a;
+    char b;
+};
+</code></pre>
+
+<h2>pointer array</h2>
+
+<pre><code>int main(int argc, const char *argv[])
+{
+    int *p[4];
+    int bb[20];
+    p[1]=bb;
+    bb[0]=123;
+    printf("%d\n",*( p[1] ));
+    printf("%d\n",**( p+1));
+    return 0;
+}
+</code></pre>

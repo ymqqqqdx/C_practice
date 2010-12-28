@@ -77,7 +77,6 @@ stu * insert_next(int id,stu *next,int nid,int chinese,char *name)
         }
         p = p->next;
     }
-    return p;
 }
 int main(int argc, const char *argv[])
 {
@@ -88,10 +87,10 @@ int main(int argc, const char *argv[])
     p = create(p,4,90,"zhao");
     p = create(p,5,67,"zhou");
     p = create(p,6,79,"wu");
-    travel(head,print);
-    head = del(1,head);
-    travel(head,print);
-    insert_next(3,head,12,88,"emule");
+    //travel(head,print);
+    //head = del(1,head);
+    //travel(head,print);
+    insert_next(1,head,12,88,"emule");
     travel(head,print);
     freelist(head);
     return 0;

@@ -1,6 +1,6 @@
 #include <stdio.h>
-#define N 100
-#define M 3
+int N = 100;
+int M = 3;
 int head=N;
 int tail=0;
 struct people{

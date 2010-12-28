@@ -1,2 +1,2 @@
 all:
-	gcc main.c
+	gcc main.c  -o mycy

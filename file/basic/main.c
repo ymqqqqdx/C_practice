@@ -3,16 +3,9 @@
 #include <errno.h>
 #include <string.h>
 
-/** 
-* @brief copy file1 to file2
-* 
-* @param argc
-* @param argv[] command file1 file2
-* 
-* @return 
-*/
 int main(int argc, const char *argv[])
 {
+    char temp;
     if(argc < 3)
     {
         fprintf(stderr, "intput:<%s> src_file dest_file\n",argv[0]);
@@ -29,8 +22,15 @@ int main(int argc, const char *argv[])
         fprintf(stderr, "open file %s:%s\n",argv[2],strerror(errno));
         exit(1);
     }
+    //while(1)
+    //{
+    //temp = fgetc(fp1);
+    //if(feof(fp1))
+    //break;
+    //fputc(temp,fp2);
+    //}
     char buff[1024];
-    while(fgets(buff,1024,fp1))
+    while(fgets(buff,6,fp1))
     {
         fputs(buff,stdout);
         fputs(buff,fp2);

@@ -3,6 +3,6 @@
 3 wangwu 82 90 78 83.3
 4 zhaosi 67 90 89 82.0
 5 hello 82 90 78 83.3
-8 laofan 78 89 98 88.3
-9 ubuntu 78 90 98 88.7
+8 ubuntu 78 90 98 88.7
+9 laofan 78 89 98 88.3
 10 nobody 89 56 32 59.0

@@ -87,6 +87,74 @@ void insert(student *p)
     getchar();
     p = create(p,id,name,chinese,math,english,aver);
 }
+student* str_copy(student *org,student *tar)
+{
+    tar->id = org->id;
+    tar->chinese = org->chinese;
+    tar->math = org->math;
+    tar->english = org->english;
+    tar->aver = org->aver;
+    strcpy(tar->name,org->name);
+}
+student * sort(student *lp)
+{
+    student *head,*tail,*temp;
+    student *p,*t;
+    char ch;
+    fprintf(stdout, "Please choose the way:\n1.Sort by ID\n2.Sort by Average\n");
+re: fprintf(stdout, "Input your choice:");
+    ch = getchar();
+    if(ch != '\n')
+        getchar();
+    else goto re;
+    head = malloc(sizeof(student));
+    tail = malloc(sizeof(student));
+    str_copy(lp,head);
+    lp = lp->next;
+    if((ch == '1')?lp->id >= head->id:lp->aver >= head->aver)
+        str_copy(lp,tail);
+    else
+    {
+        str_copy(head,tail);
+        str_copy(lp,head);
+    }
+    head->next = tail;
+    while(lp)
+    {
+        lp = lp->next;
+            if(!lp) break;
+        temp = malloc(sizeof(student));
+        str_copy(lp,temp);
+        if((ch == '1')?lp->id >= tail->id:lp->aver >= tail->aver)
+        {
+            tail->next = temp;
+            tail = temp;
+            tail->next = NULL;
+        }
+        else if((ch == '1')?lp->id <= tail->id:lp->aver <= tail->aver)
+        {
+            temp->next = head;
+            head = temp;
+        }
+        else
+        {
+            p = head;
+            while(p)
+            {
+                t = p;
+                p = p->next;
+                if(!p) break;
+                if((lp->id >= t->id) && (lp->id <= p->id))
+                {
+                    t->next = temp;
+                    temp->next = p;
+                    break;
+                }
+            }
+        }
+    }
+    return head;
+}
 int main(int argc, const char *argv[])
 {
     if(!(fp1 = fopen("database.txt","r")))
@@ -119,6 +187,10 @@ re: fprintf(stdout, "Input your choice:");
     {
         insert(p);
         travel(head);
+    }
+    else if(ch == '2')
+    {
+        travel(sort(head));
     }
     else if(ch == '4')
     {

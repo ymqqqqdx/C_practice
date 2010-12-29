@@ -30,7 +30,7 @@ student *create(student *pro,int id,char *name,int chinese,int math,int english,
 void travel(student *head)
 {
     student *p = head;
-    fprintf(stdout, "ID\tName%-11sChinese\tMath\tEnglish\tAverage\n","");
+    fprintf(stdout, "ID\tName%-11sChinese\tMath\tEnglish\tAverage\n-------------------------------------------------------\n","");
     FILE *fp1 = fopen("database.txt","w");
     while(p)
     {
@@ -44,7 +44,7 @@ int delete(student *p)
 {
     student *temp = p;
     char ch;
-    fprintf(stdout, "Please choose the way:\n1.Delete by ID.\n2.Delete by name\n3.Exit\n");
+st: fprintf(stdout, "************Menu*************\nPlease choose the way:\n1.Delete by ID.\n2.Delete by name\n3.Exit\n*****************************\n");
 re: fprintf(stdout, "Input your choice:");
     ch = getchar();
     if(ch != '\n')
@@ -59,8 +59,13 @@ re: fprintf(stdout, "Input your choice:");
             temp = p;
             p = p->next;
             if(p)
+            {
                 if(p->id == id)
+                {
                     temp->next = p->next;
+                    return 0;
+                }
+            }
         }
     }
     else if(ch == '2')
@@ -72,19 +77,35 @@ re: fprintf(stdout, "Input your choice:");
             temp = p;
             p = p->next;
             if(p)
+            {
                 if(!strcmp(p->name,name))
+                {
                     temp->next = p->next;
+                    return 0;
+                }
+            }
         }
     }
     else if(ch == '3')
         return 1;
-    return 0;
+    fprintf(stdout, "**************error****************\nNo match item! Try again.\n***********************************\n");
+    goto st;
+    return 1;
 }
-void insert(student *p)
+void insert(student *head,student *p)
 {
-    fprintf(stdout, "Please input the new info(ID name chinese math english average)\n");
+st: fprintf(stdout, "Please input the new info(ID name chinese math english average)\n");
     scanf("%d %s %d %d %d %f",&id,name,&chinese,&math,&english,&aver);
     getchar();
+    while(head)
+    {
+        if(head->id == id)
+        {
+            fprintf(stderr, "**************error***************\nID %d already exists!Try again!\n**********************************\n",id);
+            goto st;
+        }
+        head = head->next;
+    }
     p = create(p,id,name,chinese,math,english,aver);
 }
 student* str_copy(student *org,student *tar)
@@ -101,7 +122,7 @@ student * sort(student *lp)
     student *head,*tail,*temp;
     student *p,*t;
     char ch;
-    fprintf(stdout, "Please choose the way:\n1.Sort by ID\n2.Sort by Average\n");
+    fprintf(stdout, "***********Menu************\nPlease choose the way:\n1.Sort by ID\n2.Sort by Average\n***************************\n");
 re: fprintf(stdout, "Input your choice:");
     ch = getchar();
     if(ch != '\n')
@@ -131,7 +152,7 @@ re: fprintf(stdout, "Input your choice:");
             tail = temp;
             tail->next = NULL;
         }
-        else if((ch == '1')?lp->id <= tail->id:lp->aver <= tail->aver)
+        else if((ch == '1')?lp->id <= head->id:lp->aver <= head->aver)
         {
             temp->next = head;
             head = temp;
@@ -144,7 +165,7 @@ re: fprintf(stdout, "Input your choice:");
                 t = p;
                 p = p->next;
                 if(!p) break;
-                if((lp->id >= t->id) && (lp->id <= p->id))
+                if(((ch == '1')?lp->id >= t->id:lp->aver >= t->aver) && ((ch == '1')?lp->id <= p->id:lp->aver <= p->aver))
                 {
                     t->next = temp;
                     temp->next = p;
@@ -175,7 +196,7 @@ int main(int argc, const char *argv[])
         p = create((i++-1)?p:head,id,name,chinese,math,english,aver);
     }
     fclose(fp1);
-start:    fprintf(stdout, "Please select the option:\n1.Display all students' info\n2.Sort by average\n3.Insert a new info\n4.Delete a record\n5.Quit\n");
+start:    fprintf(stdout, "*************Main Menu***************\nPlease select the option:\n1.Display all students' info\n2.Sort by average or ID\n3.Insert a new info\n4.Delete a record\n5.Quit\n*************************************\n");
 re: fprintf(stdout, "Input your choice:");
     ch = getchar();
     if(ch != '\n')
@@ -185,13 +206,11 @@ re: fprintf(stdout, "Input your choice:");
         travel(head);
     else if(ch == '3')
     {
-        insert(p);
+        insert(head,p);
         travel(head);
     }
     else if(ch == '2')
-    {
         travel(sort(head));
-    }
     else if(ch == '4')
     {
         if(!delete(head))

@@ -1,2 +1,4 @@
 all:
-	gcc main.c  -o mycy
+	gcc new.c
+	./a.out
+	less www.c

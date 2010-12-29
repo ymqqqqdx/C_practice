@@ -1,3 +1,5 @@
+##Debug
+    hexdump show the hex code of a file.
 ##After install nvidia x driver
     in /etc/X11/xorg.conf add
     Option "RegistryDwords" "EnableBrightnessControl=1"

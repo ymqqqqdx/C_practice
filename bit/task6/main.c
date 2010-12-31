@@ -36,14 +36,13 @@ void exchange()
 {
     char arr[100];
     char *p = arr;
-st: printf("Please input a string:");
-    scanf("%s",arr);
-    getchar();
-    if(!strlen(arr))
-        goto st;
+    printf("Please input a string:");
+    fgets(arr,100,stdin);
+    arr[strlen(arr) - 1] = '\0';
     while(*p)
     {
-        *p < 'a' ? (*p += 32) : (*p -= 32);
+        if(*p != ' ')
+            *p < 'a' ? (*p += 32) : (*p -= 32);
         p++;
     }
     puts(arr);

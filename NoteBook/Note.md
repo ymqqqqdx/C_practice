@@ -1,3 +1,23 @@
+##GCC
+    gcc -c translate .c file to .o file -o to set the name
+    gcc -c main.c -I(include) ./lib/
+    readelf -a analyse a binary file
+    objdump -dS disassembling
+###Static link
+    ar rs libstack.a push.o stack.o
+    step1. gcc -a *.c to make .o file
+    step2. ar rs libstack.a *.o 
+    gcc main.o -L(path)./lib -l(name)stack
+    ldd to view the link
+##GDB
+    l to list the sourcr
+    b to set breakpoint
+    s run step by step
+    r run full speed
+###Dymanic link
+    gcc -fPIC -c *.c to create dymanic
+    gcc -shared libxxx.so *.o
+    gcc main.o -L./lib -lxxx
 ##Debug
     hexdump show the hex code of a file.
 ##After install nvidia x driver

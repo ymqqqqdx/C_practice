@@ -1,2 +1,2 @@
 all:
-	gcc main.c
+	gcc fbtest.c

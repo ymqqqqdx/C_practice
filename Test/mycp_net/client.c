@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	{
 		printf("\n");
 		printf("Sorry, your type is wrong.\n");
-		printf("Usage: %s x.x.x.x(server IP) filename\n", argv[0]);
+		printf("Usage: %s x.x.x.x(server IP) filename(remote)  filename(local)\n", argv[0]);
 		printf("\n");
 		exit(EXIT_FAILURE);
 	}
@@ -70,6 +70,7 @@ int main(int argc, char *argv[])
             len = recv(client_sock, buffer, BUFFER_SIZE, 0);
             write(fd, buffer, len);
         }
+        usleep(3000);
     }
     
 	close(client_sock);

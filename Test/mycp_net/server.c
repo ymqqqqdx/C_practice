@@ -67,9 +67,6 @@ int main(int argc, const char *argv[])
             printf("client port: %d\n",ntohs(client.sin_port));
         }
 
-        //fd = open("filename", O_RDONLY);
-        //strcpy(buffer, "Please enter the file name: \n");
-        //n = send(client_sock, buffer, strlen(buffer), 0);
         len = recv(client_sock, buffer, 256, 0);
         printf("File to send:\n");
         write(STDOUT_FILENO, buffer, len);
@@ -91,6 +88,7 @@ int main(int argc, const char *argv[])
                 read(fd, buffer, BUFFER_SIZE);
                 send(client_sock, buffer, BUFFER_SIZE, 0);
             }
+            printf("%d\n",i);
         }
         printf("File send complete!\n");
         close(client_sock);

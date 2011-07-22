@@ -10,7 +10,7 @@
 void del_char(char *str,char c)
 {
     char *p = str;
-    for(;*p;p++)
+    for (;*p; p++) 
         if(*p != c)
             *(str++) = *p;
     *str = '\0';
